@@ -2,17 +2,13 @@ name: clang-format linter
 
 on: [push,pull_request]
 
-permissions:
-  contents: read
-
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
+
+    - uses: InsightSoftwareConsortium/ITKClangFormatLinterAction@main
       with:
-        fetch-depth: 1
-    - uses: InsightSoftwareConsortium/ITKClangFormatLinterAction@master
-      with:
-        itk-branch: master
+        itk-branch: main
